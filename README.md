@@ -3,7 +3,7 @@ To Do List is a web application created using React and Django.
 
 # How To Run
 1. Install xampp and run mysql and apache server.
-2. creat mysql database todolist.
+2. Creat mysql database todolist.
 
 3. Activate virtualenv env using cmd 
 	[Windows]
@@ -13,7 +13,7 @@ To Do List is a web application created using React and Django.
 	[Linux]
 	-> source /env/bin/activate
 	
-4. change directory to where manage.py is present:
+4. Change directory to where manage.py is present:
 	-> cd /todolist/
 
 5. Run these cmds:
