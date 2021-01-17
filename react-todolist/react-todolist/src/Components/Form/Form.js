@@ -1,57 +1,41 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useForm} from 'react-hook-form';
-import {message, Button} from 'antd';
+
+import { useAlert } from 'react-alert';
+import classes from './Form.css';
 
 
-const Form = () => {
+const Form = (props) => {
+  const alert = useAlert();
   const {register, handleSubmit, errors} = useForm();
   const [reload, setReload] = useState(false);
 
-  const success = () => {
-    message.success('Bucket is created', 10);
-  }
-
-  const onSubmit = (data) => {
-    console.log(data)
-
+  const onSubmit = (data, e) => {
     axios.post('http://127.0.0.1:8000/todolist/api/bucket/', {
       "bucket_name": data['bucket'],
       "created_by": "react"
-    }).then(res=>success()).catch(err => console.log(err))
-
-
-    // if (!bucketPresent) {
-    //   axios.post('http://127.0.0.1:8000/todolist/api/bucket/', {
-    //     "bucket_name": data['bucket'],
-    //     "created_by": "react"
-    //   }).then(res=>{
-    //     setBucketPresent(true)
-    //   }).catch(err => console.log(err))
-    // }
-    // console.log(bucketPresent)
-
-    // if (bucketPresent) {
-    //   axios.post('http://127.0.0.1:8000/todolist/api/bucket/'+data['bucket']+'/list/',{
-    //     "list_topic": data['todo'],
-    //     "created_by": "react"
-    //   }).then().catch(err => console.log(err))
-    // }
+    }).then(res=>{
+      alert.show('Bucket is created!');
+    }).catch(err => console.log(err))
+    props.handleReload(true);
+    e.target.reset();
   };
 
 
   return(
-     <form onSubmit={handleSubmit(onSubmit)}  id="form">
+     <form onSubmit={handleSubmit(onSubmit)}  id="form" className={classes.Form}>
         <div className="flex-wrapper">
-          <div style={{flex: 3, flexDirection: 'row'}}>
-            <input className="form-control" id="bucket" ref={register({required: true})}
-              type="text" name="bucket" placeholder="Create Bucket..." />
-          </div>
-
-          <div style={{flex: 1, flexDirection: 'row'}}>
-            <button id="submit" className="btn btn-warning" type="submit" name="create">
-              create
-            </button>
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <input className="form-control" id="bucket" ref={register({required: true})}
+                type="text" name="bucket" placeholder="Create Bucket..."/>
+            </div>
+            <div className={classes.Button} class="col-sm-6 col-md-6">
+              <button id="submit" className="btn btn-warning" type="submit" name="create">
+                create
+              </button>
+            </div>
           </div>
         </div>
       </form>

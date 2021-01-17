@@ -1,0 +1,10 @@
+.Form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: inherit;
+}
+
+.Button {
+  margin-top: 5px;
+  justify-content: center;
+}
