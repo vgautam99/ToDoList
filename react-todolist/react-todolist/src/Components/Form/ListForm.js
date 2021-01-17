@@ -35,20 +35,20 @@ const ListForm = (props) => {
   }
 
   return(
-    <form onSubmit={onSubmit}  id="list-form" className={classes.Form}>
-        <div className="flex-wrapper">
-          <div>
-            <input className="form-control" id="todo" onChange={updateListHandler}
-              value={listName} type="text" name="todo" placeholder="Add List..." />
-          </div>
+      <form onSubmit={onSubmit}  id="list-form">
+          <div class="row">
+            <div class="col-sm-8 col-md-8">
+              <input className="form-control" id="todo" onChange={updateListHandler}
+                value={listName} type="text" name="todo" placeholder="Add List..." />
+            </div>
 
-          <div className={classes.Button}>
-            <button id="submit" className="btn btn-warning" type="submit" name="create">
-              Add
-            </button>
+            <div class="col-sm-4 col-md-4">
+              <button id="submit" className="btn btn-warning" type="submit" name="create">
+                Add
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
   );
 };
 

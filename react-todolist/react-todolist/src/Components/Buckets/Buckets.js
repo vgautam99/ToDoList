@@ -92,7 +92,7 @@ const Buckets = () => {
 
   return (
     <div>
-      <div class="row">
+      <div class="row" style={{marginLeft:"1px"}}>
         <Form handleReload={handleReload}/>
       </div>
       <div class="row">
@@ -125,18 +125,21 @@ const Buckets = () => {
 
           <React.Fragment>
           <h2 ref={_subtitle => (subtitle = _subtitle)}>To Do List</h2>
-          <div class="row" id="modal-button">
-            <button onClick={closeModal}>close</button>
-            <button onClick={()=>deleteBucket(bucketName)}>Delete Bucket</button>
-            <button onClick={()=>showRenameBucketHandler(visible)}>Update Bucket</button>
-          </div>
-
-          <div class="row" id="rename-box">
-            {showUpdateBucket?<BucketForm bucketName={bucketName} showRenameBucketHandler={showRenameBucketHandler}/>:null}
-          </div>
-
           <div class="row">
-            <ListForm bucketName={bucketName} handleReload={handleReload}/>
+            <div class="col-sm-6 col-md-6">
+              <Button style={{color: "white", background: "orange", marginRight: "5px"}} onClick={closeModal}>close</Button>
+              <Button style={{color: "white", background: "red", marginRight: "5px"}} onClick={()=>deleteBucket(bucketName)}>Delete Bucket</Button>
+              <Button style={{color: "white", background: "green"}} onClick={()=>showRenameBucketHandler(visible)}>Update Bucket</Button>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              {showUpdateBucket?<BucketForm bucketName={bucketName} showRenameBucketHandler={showRenameBucketHandler}/>:null}
+            </div>
+          </div>
+
+          <div class="row" style={{marginTop:"5px"}}>
+            <div class="col-sm-12 col-md-12">
+              <ListForm bucketName={bucketName} handleReload={handleReload}/>
+            </div>
           </div>
 
           <div class="row">

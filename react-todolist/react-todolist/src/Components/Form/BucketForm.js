@@ -26,10 +26,13 @@ const BucketForm = (props) => {
   }
 
   return (
-    <div>
-      <input type="text" placeholder={bucketUpdatedName} onChange={updateBucketHandler}/>
-      <Button type="primary" onClick={()=>updateBucket(bucketUpdatedName)}>update</Button>
-      <h1>{bucketUpdatedName}</h1>
+    <div class="row">
+      <div class="col-sm-8">
+        <input style={{margin: "5px"}} className="form-control" type="text" placeholder={bucketUpdatedName} onChange={updateBucketHandler}/>
+      </div>
+      <div class="col-sm-4">
+        <Button style={{margin: "5px"}} type="primary" onClick={()=>updateBucket(bucketUpdatedName)}>update</Button>
+      </div>
     </div>
    );
 }
