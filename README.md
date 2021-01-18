@@ -1,3 +1,8 @@
+![alt text](https://github.com/vgautam99/ToDoList/blob/master/react-todolist/react-todolist/src/Components/Assets/Images/bucket_home.png?raw=true)
+
+![alt text](https://github.com/vgautam99/ToDoList/blob/master/react-todolist/react-todolist/src/Components/Assets/Images/list_img.png?raw=true)
+
+
 # ToDoList
 To Do List is a web application created using React and Django.
 
