@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: backend
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: backend
+    spec:
+      containers:
+      - image: 7000669709/todolist:backend-v17
+        name: todolist
+        env:
+          - name: DB_NAME
+            value: "todolist"
+          - name: MYSQL_HOST
+            value: "mysql-service"
+          - name: MYSQL_USER
+            value: "root"
+          - name: MYSQL_PORT
+            value: "3306"
+          - name: MYSQL_PASSWORD
+            value: "mysql123"
+          - name: FRONTEND
+            value: "frontend-service"
+        ports:
+          - containerPort: 8000
+        volumeMounts:
+          - mountPath: /var/log/
+            name: backend
+        command: ["/bin/sh", "-c"]
+        args:
+          - apt-get update;
+            apt-get -y install vim;
+            python manage.py makemigrations bucket;
+            python manage.py migrate;
+            gunicorn --bind 0.0.0.0:8000 --workers 3 todolist.wsgi:application
+      volumes:
+        - name: backend
+          hostPath:
+            path: /var/log/

@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+
+kind: Ingress
+
+metadata:
+  name: todolist-ingress
+spec:
+  rules:
+    - host: kubernetes.docker.internal
+      http:
+       paths:
+        - path: /
+          backend:
+            serviceName: frontend-service
+            servicePort: 3000
+        
+        - path: /todolist
+          backend:
+            serviceName: backend-service
+            servicePort: 8000
+  

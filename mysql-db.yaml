@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mysql-db
+  name: mysql-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-db
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mysql-db
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - mountPath: /var/log/
+            name: mysql-db
+        env:
+          - name: MYSQL_DATABASE
+            value: todolist
+          - name: MYSQL_ROOT_PASSWORD
+            value: mysql123
+      volumes:
+        - name: mysql-db
+          hostPath:
+            path: /var/log/
+
