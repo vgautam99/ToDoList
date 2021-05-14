@@ -16,9 +16,9 @@ const BucketForm = (props) => {
   }
 
   const updateBucket = (newBucketName) => {
-    axios.put('http://127.0.0.1:8000/todolist/api/bucket/'+props.bucketName+'/',{
+    axios.put('/todolist/api/bucket/'+props.bucketName+'/',{
       "bucket_name": newBucketName
-    }).then(()=>{
+    }).then(res =>{
       alert.show('Bucket name is updated!');
       setUpdatedBucket(newBucketName);
     }).catch(err=>console.log(err))

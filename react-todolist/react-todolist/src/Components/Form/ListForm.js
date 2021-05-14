@@ -10,16 +10,17 @@ const ListForm = (props) => {
   const alert = useAlert();
   const [reload, setReload] = useState(true);
   const [listName, setListName] = useState('');
+  
 
   useEffect(()=>{
-    axios.get('http://127.0.0.1:8000/todolist/api/bucket/'+props.bucketName+'/list/').then(res=>{
+    axios.get('/todolist/api/bucket/'+props.bucketName+'/list/').then(res=>{
       setReload(false);
     }).catch(err => console.log(err))
   }, [reload])
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    axios.post('http://127.0.0.1:8000/todolist/api/bucket/'+props.bucketName+'/list/',{
+    axios.post('/todolist/api/bucket/'+props.bucketName+'/list/',{
         "list_topic": listName,
         "created_by": "react"
       }).then(res=>{

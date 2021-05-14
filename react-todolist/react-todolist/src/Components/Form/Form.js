@@ -11,8 +11,9 @@ const Form = (props) => {
   const {register, handleSubmit, errors} = useForm();
   const [reload, setReload] = useState(false);
 
+
   const onSubmit = (data, e) => {
-    axios.post('http://127.0.0.1:8000/todolist/api/bucket/', {
+    axios.post('/todolist/api/bucket/', {
       "bucket_name": data['bucket'],
       "created_by": "react"
     }).then(res=>{
